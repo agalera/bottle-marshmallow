@@ -1,5 +1,5 @@
-# Cerberus plugin
-Cerberus plugin for bottle
+# Marshmallow plugin
+Marshmallow plugin for bottle
 
 ## installation
 
