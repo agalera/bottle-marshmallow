@@ -27,7 +27,7 @@ readme = read_md('README.md')
 
 setup(
     name='bottle-marshmallow',
-    version='1.0.1',
+    version='1.0.2',
     description='marshmallow plugin for bottle',
     long_description=readme,
     author='Alberto Galera Jimenez',

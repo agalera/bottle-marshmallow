@@ -13,11 +13,8 @@ class QuerySchema(Schema):
 
 @post('/marshmallow/<ex>', schemas={'body': ExampleSchema,
                                     'query_string': QuerySchema})
-def test_marshmallow(ex):
-    from bottle import request
-    print("query_string", request.query.get('name'), type(request.query.get('name')))
-    print("url", ex, type(ex))
-    print("body", request.json.get('name'), type(request.json.get('name')))
+def test_marshmallow(validated, ex):
+    print(validated)
 
 
 install(MarshmallowPlugin())

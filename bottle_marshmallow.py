@@ -10,24 +10,22 @@ def _wrapper(schemas, output, callback, *args, **kwargs):
     shortcut = {
         'url': kwargs,
         'body': bottle.request.json or {},
-        'query_string': {
-            k: v for k, v in bottle.request.query.items()
-        }
+        'query_string': bottle.request.query
     }
 
     for k in schemas:
         tmp = schemas[k].load(shortcut[k])
+
         if tmp.errors:
-            raise bottle.HTTPError(
-                {'errors': tmp['errors'], 'validation': k}
+            raise bottle.HTTPResponse(
+                {'errors': tmp['errors'], 'validation': k},
+                status=400
             )
 
-        # update original reference
-        shortcut[k] = shortcut[k].update(tmp.data)
-
+        shortcut[k] = tmp.data
     if not output:
-        return callback(*args, **kwargs)
-    return output.load(callback(*args, **kwargs))
+        return callback(*args, validated=shortcut, **kwargs)
+    return output.load(callback(*args, validated=shortcut, **kwargs)).data
 
 
 def serializers(schemas):
