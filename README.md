@@ -7,7 +7,7 @@ Via pip:
 ```pip install bottle-marshmallow```
 
 Or clone:
-```git clone https://github.com/kianxineki/bottle-marshmallow.git```
+```git clone https://github.com/agalera/bottle-marshmallow.git```
 
 
 ## example:
