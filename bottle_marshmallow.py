@@ -14,15 +14,13 @@ def _wrapper(schemas, output, callback, *args, **kwargs):
     }
 
     for k in schemas:
-        tmp = schemas[k].load(shortcut[k])
-
-        if tmp.errors:
+        try:
+            shortcut[k] = schemas[k].load(shortcut[k])
+        except Exception:
             raise bottle.HTTPResponse(
                 {'errors': tmp['errors'], 'validation': k},
                 status=400
             )
-
-        shortcut[k] = tmp.data
     if not output:
         return callback(*args, validated=shortcut, **kwargs)
     return output.load(callback(*args, validated=shortcut, **kwargs)).data
