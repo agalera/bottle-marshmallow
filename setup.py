@@ -27,12 +27,12 @@ readme = read_md('README.md')
 
 setup(
     name='bottle-marshmallow',
-    version='1.0.3',
+    version='1.0.5',
     description='marshmallow plugin for bottle',
     long_description=readme,
     author='Alberto Galera Jimenez',
     author_email='galerajimenez@gmail.com',
-    url='https://github.com/kianxineki/bottle-marshmallow',
+    url='https://github.com/agalera/bottle-marshmallow',
     py_modules=['bottle_marshmallow'],
     include_package_data=True,
     install_requires=['marshmallow'],
